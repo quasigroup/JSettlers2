@@ -22,7 +22,11 @@ compileJava {
     targetCompatibility = '1.8'
 }
 
-ext.python_command = 'python'  // expected to be in PATH; could change to python3 if needed
+if (hasProperty('python_command')) {
+    ext.python_command = property('python_command')
+} else {
+    ext.python_command = 'python'  // expected to be in PATH; could change to python3 if needed
+}
 
 repositories {
     mavenCentral()
@@ -33,6 +37,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'  // optional at runtime, for savegame feature
         // If version changes, update Readme.developer.md and jsserver.properties.sample
         // Same version is used by v3 branch (dependency of protobuf-java-util)
+    implementation 'org.postgresql:postgresql:42.6.0'
 }
 
 sourceSets {
@@ -136,7 +141,6 @@ task serverJar(type: Jar) {
             'Main-Class': 'soc.server.SOCServer',
             'Implementation-Version': project.version,
             'Build-Revision': project.git_revision,
-            'Class-Path': 'gson.jar',
         )
     }
     from(sourceSets.main.output) {
@@ -154,6 +158,34 @@ task serverJar(type: Jar) {
         include "resources/version.info"
         include "resources/strings/server/**"
     }
+}
+
+task serverJarWithDependencies(type: Jar) {
+    archiveFileName = 'JSettlersServerWithDeps.jar'
+    manifest {
+        attributes(
+                'Main-Class': 'soc.server.SOCServer',
+                'Implementation-Version': project.version,
+                'Build-Revision': project.git_revision,
+                'Class-Path': 'gson.jar',
+        )
+    }
+    from(sourceSets.main.output) {
+        include "net/nand/util/i18n/mgr/**"
+        include "soc/baseclient/**"
+        include "soc/debug/**"
+        include "soc/disableDebug/**"
+        include "soc/game/**"
+        include "soc/message/**"
+        include "soc/robot/**"
+        include "soc/server/**"
+        include "soc/util/**"
+    }
+    from(sourceSets.main.resources) {
+        include "resources/version.info"
+        include "resources/strings/server/**"
+    }
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
 task fullJar(type: Jar) {
@@ -182,7 +214,36 @@ task fullJar(type: Jar) {
     from(sourceSets.main.resources) {
         include "resources/**"
     }
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
 }
+
+task fullJarWithDependencies(type: Jar) {
+    archiveBaseName = 'JSettlersWithDeps'
+    archiveVersion = project.version
+    manifest {
+        attributes(
+                'Main-Class': 'soc.client.SOCPlayerClient',
+                'Implementation-Version': project.version,
+                'Build-Revision': project.git_revision,
+        )
+    }
+    from(sourceSets.main.output) {
+        include "net/nand/util/i18n/mgr/**"
+        include "soc/baseclient/**"
+        include "soc/client/**"
+        include "soc/debug/**"
+        include "soc/disableDebug/**"
+        include "soc/game/**"
+        include "soc/message/**"
+        include "soc/robot/**"
+        include "soc/server/**"
+        include "soc/util/**"
+    }
+    from(sourceSets.main.resources) {
+        include "resources/**"
+    }
+}
+
 
 // PropertiesTranslatorEditor utility; not built by default
 task i18neditorJar(type: Jar) {
@@ -330,7 +391,7 @@ task extraTest(type: Test) {
 
 // run all python extra tests, using PyUnit (unittest module); returns 0 if no failures
 task extraTestPython(type: Exec) {
-    executable 'python'  // expected to be in PATH
+    executable python_command
     workingDir 'src/extraTest/python'
     args '-m', 'unittest', 'discover', '--verbose'  // discover requires python 2.7 or higher
     environment CLASSPATH: tasks.extraTest.classpath.asPath
@@ -346,7 +407,7 @@ clean {
 }
 
 artifacts {
-    archives serverJar, fullJar
+    archives serverJar, fullJar, serverJarWithDependencies, fullJarWithDependencies
 }
 
 
