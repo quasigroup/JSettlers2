@@ -1187,11 +1187,11 @@ msgstr ""
 
 #: robber.willmove
 msgid "{0} will move the robber."
-msgstr "{0} wird den Räuber verstellen."
+msgstr "{0} wird den Räuber versetzen."
 
 #: robber.willmove.choose
 msgid "{0} must choose to move the robber or the pirate."
-msgstr "{0} muss sich entscheiden den Piraten oder den Räuber zu verstellen."
+msgstr "{0} muss sich entscheiden den Piraten oder den Räuber zu versetzen."
 
 #: robber.willmove.pirate
 msgid "{0} will move the pirate ship."
@@ -1222,20 +1222,20 @@ msgstr "Du hast {0,rsrcs} von {2} gestohlen."
 #. # robber or pirate moved: {0} = player, {1} = 1 the robber, 2 the pirate
 #: robberpirate.moved
 msgid "{0} moved {1,choice, 1#the robber|2#the pirate}."
-msgstr "{0} hat {1,choice, 1# den Räuber|2#den Piraten verstellt."
+msgstr "{0} hat {1,choice,1# den Räuber|2#den Piraten versetzt."
 
 #: robberpirate.moved.choose.cloth.rsrcs
 msgid ""
 "{0} moved {1,choice, 1#the robber|2#the pirate}. Must choose to steal cloth or "
 "steal resources."
 msgstr ""
-"{0} hat {1,choice, 1#den Räuber|2# den Piraten} verstellt. Muss sich "
+"{0} hat {1,choice,1#den Räuber|2# den Piraten} versetzt und muss sich "
 "entscheiden, Tuch oder Rohstoffe zu stehlen."
 
 #: robberpirate.moved.choose.victim
 msgid "{0} moved {1,choice, 1#the robber|2#the pirate}. Must choose a victim."
 msgstr ""
-"{0} hat {1,choice, 1# den Räuberer|2#den Piraten} verstellt. Darf ein Opfer "
+"{0} hat {1,choice,1# den Räuber|2#den Piraten} versetzt und darf ein Opfer "
 "wählen."
 
 #: event.fog.reveal
@@ -1252,7 +1252,7 @@ msgstr "Das Spiel endet: Weniger als 4 Dörfer haben noch Tuch."
 
 #: event.sc_clvi.not.prevented.pirate
 msgid "You are no longer prevented from moving the pirate ship."
-msgstr "Du darfst ab jetzt das Piratenschiff verstellen."
+msgstr "Du darfst ab jetzt das Piratenschiff versetzen."
 
 #: event.sc_piri.fleet.defeated
 msgid "All pirate fortresses have been recaptured, the pirate fleet is defeated."
