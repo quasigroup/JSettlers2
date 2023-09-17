@@ -1,0 +1,96 @@
+version: '3'
+services:
+  db:
+    container_name: db
+    restart: unless-stopped
+    image: postgres:15-bullseye
+    volumes:
+      - data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-password}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-socdata}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - 127.0.0.1:5432:5432
+
+  jsettlers2:
+    container_name: jsettlers2
+    build: .
+    command:
+      - -Djsettlers.port=8880 # TCP port number for server to listen for client connections
+      #- -Djsettlers.connections=40 # Maximum connection count, including robots (default 40)
+      #- -Djsettlers.startrobots=7 # Number of robots to create at startup (default 7)
+      - -Djsettlers.accounts.open=N # Permit open self-registration of new user accounts? (if Y and using a DB)
+      - -Djsettlers.accounts.required=Y # Require all players to have a user account? (if Y; requires a DB)
+      - -Djsettlers.accounts.admins=${JSETTLERS_ADMIN_ACCOUNTS:-admin} # Permit only these usernames to create accounts (comma-separated)
+      #- -Djsettlers.admin.welcome=Welcome # If set, welcome message text to send when clients connect
+      #- -Djsettlers.allow.debug=N # Allow remote debug commands? (if Y)
+      #- -Djsettlers.client.maxcreatechannels=2 # Maximum simultaneous channels that a client can create
+      #- -Djsettlers.client.maxcreategames=2 # Maximum simultaneous games that a client can create
+      #- -Djsettlers.gameopts.activate= # If set, activate these inactive game options (comma-separated list)
+      #- -Djsettlers.game.disallow.6player=N # Flag to disallow 6-player games
+      #- -Djsettlers.game.disallow.sea_board=N # Flag to disallow sea board and scenarios
+      #- -Djsettlers.bots.botgames.total=0 # Run this many robot-only games, a few at a time (default 0); allow bot-only games
+      #- -Djsettlers.bots.botgames.gametypes=1 # Robot-only games: Game size/board type mix (default 1)
+      #- -Djsettlers.bots.botgames.parallel=4 # Start this many robot-only games at a time (default 4)
+      #- -Djsettlers.bots.botgames.wait_sec=1.6 # Wait at startup before starting robot-only games (default 1.6 seconds)
+      #- -Djsettlers.bots.botgames.shutdown=N # After running the robot-only games, shut down the server if no other games are active (if Y)
+      #- -Djsettlers.bots.cookie= # Robot cookie value (default is random generated each startup)
+      #- -Djsettlers.bots.showcookie=N # Flag to show the robot cookie value at startup
+      #- -Djsettlers.bots.fast_pause_percent=25 # Pause at percent of normal pause time (0 to 100) for robot-only games (default 25)
+      #- -Djsettlers.bot.human.pause=8 # In games with humans, robots wait this many seconds before answering a trade offer (default 8)
+      #- -Djsettlers.bots.percent3p= # Percent of bots which should be third-party (0 to 100) if available
+      #- -Djsettlers.bots.start3p= # Third-party bot client classes to start up with server
+      #- -Djsettlers.bots.timeout.turn=30 # Robot turn timeout (seconds) for third-party bots
+      #- -Djsettlers.debug.bots.datacheck.rsrc= # Debug flag to check bots' count of player resources
+      - -Djsettlers.savegame.dir=/app/store # Dir in which to store savegame files
+      - -Djsettlers.stats.file.name=/app/store/stats.txt # If set, filename to append daily *STATS* into
+      #- -Djsettlers.test.validate_config # Flag to validate server and DB config, then exit (same as -t command-line option)
+      #- -Djsettlers.test.db # Flag to test database methods, then exit
+      - -Djsettlers.db.bcrypt.work_factor=12 # For user accounts in DB, password encryption Work Factor (see README) (9 to 30)
+      - -Djsettlers.db.save.games=Y # Flag to save all games in DB (if 1 or Y)
+      - -Djsettlers.db.user=${POSTGRES_USER:-postgres} # DB username
+      - -Djsettlers.db.pass=${POSTGRES_PASSWORD:-password} # DB password
+      - -Djsettlers.db.url=jdbc:postgresql://db:5432/${POSTGRES_DB:-socdata} # DB connection URL
+      #- -Djsettlers.db.jar= # DB driver jar filename
+      - -Djsettlers.db.driver=org.postgresql.Driver # DB driver class name
+      #- -Djsettlers.db.settings= # If set to "write", save DB settings properties values to the settings table and exit
+      #- -Djsettlers.db.script.setup= # If set, full path or relative path to db setup sql script; will run and exit
+      #- -Djsettlers.db.upgrade_schema= # Flag: If set, server will upgrade the DB schema to latest version and exit (if 1 or Y)
+      #- -Djsettlers.gameopt.BC=t4 # (INTBOOL) t4  Break up clumps of # or more same-type hexes/ports
+      #- -Djsettlers.gameopt.N7=f7 # (INTBOOL) f7  Roll no 7s during first # rounds
+      #- -Djsettlers.gameopt.N7C=f # (BOOL) f  Roll no 7s until a city is built
+      #- -Djsettlers.gameopt.NT=f # (BOOL) f  No trading allowed between players
+      #- -Djsettlers.gameopt.PL=4 # (INT) 4  Maximum # players
+      #- -Djsettlers.gameopt.PLAY_FO=f # (BOOL) f  Show all player info and resources
+      #- -Djsettlers.gameopt.PLAY_VPO=f # (BOOL) f  Show all VP/dev card info
+      #- -Djsettlers.gameopt.PLB=f # (BOOL) f  Use 6-player board
+      #- -Djsettlers.gameopt.PLP=f # (BOOL) f  6-player board: Can Special Build only if 5 or 6 players in game
+      #- -Djsettlers.gameopt.RD=f # (BOOL) f  Robber can't return to the desert
+      #- -Djsettlers.gameopt.SBL=f # (BOOL) f  Use sea board
+      #- -Djsettlers.gameopt.SC= # (STR) ""  Game Scenario: #
+      #- -Djsettlers.gameopt.UB=f # (BOOL) f  Allow undo piece builds and moves
+      #- -Djsettlers.gameopt.UBL==t7 # (INTBOOL) t7  Limit undos to # per player
+      #- -Djsettlers.gameopt.VP=10 # (INTBOOL) f10  Victory points to win: #
+      #- -Djsettlers.gameopt._EXT_BOT= # (STR) ""  Extra non-core option available for robots in this game
+      #- -Djsettlers.gameopt._EXT_CLI= # (STR) ""  Extra non-core option available for clients in this game
+      #- -Djsettlers.gameopt._EXT_GAM= # (STR) ""  Extra non-core option available for this game
+      #- -Djsettlers.gameopt._SC_0RVP=f # (BOOL) f  Scenarios: No longest trade route VP (no Longest Road)
+      #- -Djsettlers.gameopt._SC_3IP=f # (BOOL) f  Scenarios: Third initial settlement
+      #- -Djsettlers.gameopt._SC_CLVI=f # (BOOL) f  Scenarios: Cloth Trade with neutral villages
+      #- -Djsettlers.gameopt._SC_FOG=f # (BOOL) f  Scenarios: Some hexes initially hidden by fog
+      #- -Djsettlers.gameopt._SC_FTRI=f # (BOOL) f  Scenarios: The Forgotten Tribe
+      #- -Djsettlers.gameopt._SC_PIRI=f # (BOOL) f  Scenarios: Pirate Islands and fortresses
+      #- -Djsettlers.gameopt._SC_SANY=f # (BOOL) f  Scenarios: SVP for your first settlement on any island after initial placement
+      #- -Djsettlers.gameopt._SC_SEAC=f # (BOOL) f  Scenarios: 2 SVP for your first settlement on each island after initial placement
+      #- -Djsettlers.gameopt._SC_WOND=f # (BOOL) f  Scenarios: Wonders
+      #- -Djsettlers.gameopt._VP_ALL=f # (BOOL) f  Use default VP in all scenarios
+    restart: unless-stopped
+    volumes:
+      - .docker/store:/app/store
+    ports:
+      - 127.0.0.1:8880:8880
+
+volumes:
+  data:
