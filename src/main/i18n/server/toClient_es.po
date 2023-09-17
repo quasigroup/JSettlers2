@@ -1,0 +1,1509 @@
+#. # JSettlers i18n localization strings: At Server to send to Client.
+#. #  This file is part of Java Settlers - An online multiplayer version of the game Settlers of Catan
+#. #
+#. # This file Copyright (C) 2013-2022 Jeremy D Monin <jeremy@nand.net>
+#. #
+#. # This program is free software: you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation, either version 3 of the License, or
+#. # (at your option) any later version.
+#. #
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. #
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program.  If not, see http://www.gnu.org/licenses/ .
+#. extracted from server/toClient_es.properties
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-16 10:55+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.6.0\n"
+
+#.
+#. # See toClient.properties for important reminders about .properties filenames and format.
+#.
+#. # Initial connection to server:
+#.
+#. # Client version number too old. {0} = their version("1.1.04"); {1} = required ("1.1.05"); {2} = required as number (1105).
+#. # Version number format {2,number,#} avoids automatic thousands separator: want "1105" not "1,105" here
+#: connect.reject.client_version
+msgid ""
+"Lo siento, la versión {0} de su cliente es demasiado antiguo: Versión {1} "
+"({2,number,#}) o superior se requiere."
+msgstr ""
+
+#.
+#. # Game basics:
+#: base.emptylist.nothing
+msgctxt "base.emptylist.nothing"
+"base.emptylist.nothing"
+msgid "nada"
+msgstr ""
+
+#: base.reply.not.your.turn
+msgid "No es su turno ahora."
+msgstr ""
+
+#: resources.clay
+msgid "Arcilla"
+msgstr ""
+
+#: resources.ore
+msgid "Mineral"
+msgstr ""
+
+#: resources.sheep
+msgid "Lana"
+msgstr ""
+
+#: resources.wheat
+msgid "Cereales"
+msgstr ""
+
+#: resources.wood
+msgid "Madera"
+msgstr ""
+
+#.
+#. # spec.* is for SOCStringManager.getSpecial; this section must be identical in the client and server string properties files
+#.
+#. # spec.rsrcs.* is for {#,rsrcs}
+#: spec.rsrcs.aclay
+msgid "una arcilla"
+msgstr ""
+
+#: spec.rsrcs.aore
+msgid "un mineral"
+msgstr ""
+
+#: spec.rsrcs.asheep
+msgid "una lana"
+msgstr ""
+
+#: spec.rsrcs.awheat
+msgid "un cereal"
+msgstr ""
+
+#: spec.rsrcs.awood
+msgid "una madera"
+msgstr ""
+
+#: spec.rsrcs.aunknown
+msgid "un recurso de tipo desconocido {0}"
+msgstr ""
+
+#: spec.rsrcs.1clay
+msgid "1 arcilla"
+msgstr ""
+
+#: spec.rsrcs.1ore
+msgid "1 mineral"
+msgstr ""
+
+#: spec.rsrcs.1sheep
+msgid "1 lana"
+msgstr ""
+
+#: spec.rsrcs.1wheat
+msgid "1 cereal"
+msgstr ""
+
+#: spec.rsrcs.1wood
+msgid "1 madera"
+msgstr ""
+
+#: spec.rsrcs.1unknown
+msgid "1 recurso de tipo desconocido {0}"
+msgstr ""
+
+#: spec.rsrcs.nclay
+msgid "{0,number} arcillas"
+msgstr ""
+
+#: spec.rsrcs.nore
+msgid "{0,number} minerales"
+msgstr ""
+
+#: spec.rsrcs.nsheep
+msgid "{0,number} lanas"
+msgstr ""
+
+#: spec.rsrcs.nwheat
+msgid "{0,number} cereales"
+msgstr ""
+
+#: spec.rsrcs.nwood
+msgid "{0,number} maderas"
+msgstr ""
+
+#: spec.rsrcs.nunknown
+msgid "{0,number} recursos de tipo desconocido {1}"
+msgstr ""
+
+#: spec.rsrcs.none
+msgctxt "spec.rsrcs.none"
+msgid "nada"
+msgstr ""
+
+#. # For plural forms: Joe monopolized clay / monopolizó la madera
+#: spec.rsrcs.clay
+msgid "la arcilla"
+msgstr ""
+
+#: spec.rsrcs.ore
+msgid "los minerales"
+msgstr ""
+
+#: spec.rsrcs.sheep
+msgid "la lana"
+msgstr ""
+
+#: spec.rsrcs.wheat
+msgid "los cereales"
+msgstr ""
+
+#: spec.rsrcs.wood
+msgid "la madera"
+msgstr ""
+
+#: spec.rsrcs.unknown
+msgid "los recursos de tipo desconocido {0}"
+msgstr ""
+
+#.
+#. # spec.dcards.* is for {#,dcards}
+#. #   These are used in SOCDevCard.getCardTypeName, and its server callers messageToGameKeyedSpecial and messageToPlayerKeyedSpecial
+#: spec.dcards.unknown
+msgid "carta desconocida"
+msgstr ""
+
+#: spec.dcards.capgovhouse
+msgid "Capital (1PV)"
+msgstr ""
+
+#: spec.dcards.discoveryplenty
+msgid "Invención"
+msgstr ""
+
+#: spec.dcards.knightsoldier
+msgid "Caballero"
+msgstr ""
+
+#: spec.dcards.knightsoldier.warship
+msgid "Barco de Guerra"
+msgstr ""
+
+#: spec.dcards.market
+msgid "Mercado (1PV)"
+msgstr ""
+
+#: spec.dcards.monopoly
+msgid "Monopolio"
+msgstr ""
+
+#: spec.dcards.roadbuilding
+msgid "Construcción de Camino"
+msgstr ""
+
+#: spec.dcards.temple
+msgid "Templo (1PV)"
+msgstr ""
+
+#: spec.dcards.towerchapel
+msgid "Capilla (1PV)"
+msgstr ""
+
+#: spec.dcards.university
+msgid "Universidad (1PV)"
+msgstr ""
+
+#: spec.dcards.aunknown
+msgid "una carta desconocida"
+msgstr ""
+
+#: spec.dcards.acapgovhouse
+msgid "un Capital (+1PV)"
+msgstr ""
+
+#: spec.dcards.adiscoveryplenty
+msgid "una Invención"
+msgstr ""
+
+#: spec.dcards.aknightsoldier
+msgid "un Caballero"
+msgstr ""
+
+#: spec.dcards.aknightsoldier.warship
+msgid "un Barco de Guerra"
+msgstr ""
+
+#: spec.dcards.amarket
+msgid "un Mercado (+1PV)"
+msgstr ""
+
+#: spec.dcards.amonopoly
+msgid "un Monopolio"
+msgstr ""
+
+#: spec.dcards.aroadbuilding
+msgid "una Construcción de Camino"
+msgstr ""
+
+#: spec.dcards.atemple
+msgid "un Templo (+1PV)"
+msgstr ""
+
+#: spec.dcards.atowerchapel
+msgid "una Capilla (+1PV)"
+msgstr ""
+
+#: spec.dcards.auniversity
+msgid "una Universidad (+1PV)"
+msgstr ""
+
+#.
+#. # i18n.duration.* for I18n.durationToDaysHoursMinutesSeconds; this section must be identical in the client and server string properties files
+#: i18n.duration.days_hours_min_sec
+msgid ""
+"{0,number} {0,choice,1#día|1<días} {1,number}:{2,number,00}:{3,number,00}"
+msgstr ""
+
+#: i18n.duration.hours_min_sec
+msgid "{0,number}:{1,number,00}:{2,number,00}"
+msgstr ""
+
+#.
+#. # i18n.listitems.* for I18n.listItems; this section must be identical in the client and server string properties files
+#. # i18n.listitems.item should have a trailing space to make room before the next item, if the language uses spaces
+#: i18n.listitems.nothing
+msgctxt "i18n.listitems.nothing"
+msgid "nada"
+msgstr ""
+
+#: i18n.listitems.2
+msgid "{0} y {1}"
+msgstr ""
+
+#: i18n.listitems.item
+msgid "{0}, "
+msgstr ""
+
+#: i18n.listitems.finalitem
+msgid "y {0}"
+msgstr ""
+
+#.
+#. # This section (game.invitem.unknown - game.aport.generic) is needed at both client and server
+#. # for SOCInventoryItem / SOCStringManager.
+#: game.invitem.unknown
+msgid "Artículo desconocido"
+msgstr ""
+
+#: game.aninvitem.unknown
+msgid "Un artículo desconocido"
+msgstr ""
+
+#: game.port.three
+msgid "Puerto de 3:1"
+msgstr ""
+
+#: game.port.clay
+msgid "Puerto de 2:1 de arcilla"
+msgstr ""
+
+#: game.port.ore
+msgid "Puerto de 2:1 de mineral"
+msgstr ""
+
+#: game.port.sheep
+msgid "Puerto de 2:1 de lana"
+msgstr ""
+
+#: game.port.wheat
+msgid "Puerto de 2:1 de cereales"
+msgstr ""
+
+#: game.port.wood
+msgid "Puerto de 2:1 de madera"
+msgstr ""
+
+#: game.port.generic
+msgid "Puerto de tipo {0}"
+msgstr ""
+
+#: game.aport.three
+msgid "un puerto de 3:1"
+msgstr ""
+
+#: game.aport.clay
+msgid "un puerto de 2:1 de arcilla"
+msgstr ""
+
+#: game.aport.ore
+msgid "un puerto de 2:1 de mineral"
+msgstr ""
+
+#: game.aport.sheep
+msgid "un puerto de 2:1 de lana"
+msgstr ""
+
+#: game.aport.wheat
+msgid "un puerto de 2:1 de cereales"
+msgstr ""
+
+#: game.aport.wood
+msgid "un puerto de 2:1 de madera"
+msgstr ""
+
+#: game.aport.generic
+msgid "un puerto de tipo {0}"
+msgstr ""
+
+#: game.playername.gets.resources.common
+msgid "{0} recibe {1,rsrcs}."
+msgstr ""
+
+#: game.time.expire.deleted
+msgid ">>> El plazo en este juego ha caducado, ahora será borrado."
+msgstr ""
+
+#: game.time.expire.soon.addtime
+msgid ""
+">>> Hay menos de {0,number} minutos restantes del plazo del juego. Escribe "
+"*ADDTIME* para extender este juego de otros 30 minutos."
+msgstr ""
+
+#.
+#. # SOCGameOption descriptive names, in same order as SOCGameOptionSet.getAllKnownOptions(). Hidden options aren't included.
+#. #     Key names are all-caps to match SOCGameOption keys. When client asks server for localized names, server
+#. #     looks for gameopt.PL to see if any exist in the client's locale.
+#: gameopt.PL
+msgid "Máximo # jugadores"
+msgstr ""
+
+#: gameopt.PLB
+msgid "Usar mesa para 6 jugadores"
+msgstr ""
+
+#: gameopt.PLP
+msgid ""
+"Mesa para 6: Puede Construir Especial sólo si el juego contiene 5 o 6 "
+"jugadores"
+msgstr ""
+
+#: gameopt.PLAY_FO
+msgid "Mostrar toda la información del jugadores y recursos"
+msgstr ""
+
+#: gameopt.PLAY_VPO
+msgid ""
+"Mostrar toda la información del Puntos de Victoria y cartas de desarrollo"
+msgstr ""
+
+#: gameopt.SBL
+msgid "Usar la mesa del mar"
+msgstr ""
+
+#: gameopt.RD
+msgid "El ladrón no puede devolver al desierto"
+msgstr ""
+
+#: gameopt.N7
+msgid "Los dados no lanzan ninguna 7 durante las primeras # rondas"
+msgstr ""
+
+#: gameopt.N7C
+msgid "Los dados no lanzan ninguna 7 hasta que se construya una ciudad"
+msgstr ""
+
+#: gameopt.BC
+msgid "Romper los macizos de # o más casillas del mismo tipo"
+msgstr ""
+
+#: gameopt.NT
+msgid "No se permite el comercio entre los jugadores"
+msgstr ""
+
+#: gameopt.VP
+msgid "Puntos de Victoria para ganar: #"
+msgstr ""
+
+#: gameopt._VP_ALL
+msgid "Usar el VP de default en todos los scenarios"
+msgstr ""
+
+#: gameopt.SC
+msgid "Escenario del Juego: #"
+msgstr ""
+
+#: gameopt.UB
+msgid ""
+"Permitir que deshacer los construcciones y los movimientos de las piezas"
+msgstr ""
+
+#. # Scenario game option names:
+#. #    See also gamescen.*
+#: gameopt._SC_SANY
+msgid ""
+"Escenarios: PVE por su primer pueblo en cualquier isla después de la "
+"colocación inicial"
+msgstr ""
+
+#: gameopt._SC_SEAC
+msgid ""
+"Escenarios: 2 PVE por su primer pueblo en cada isla después de la colocación "
+"inicial"
+msgstr ""
+
+#: gameopt._SC_FOG
+msgid "Escenarios: Algunas casillas están ocultos inicialmente por la niebla"
+msgstr ""
+
+#: gameopt._SC_0RVP
+msgid ""
+"Escenarios: No hay PV por la Ruta Comercial más Larga (no hay Camino más "
+"Largo)"
+msgstr ""
+
+#: gameopt._SC_3IP
+msgid "Escenarios: Tercer pueblo inicial"
+msgstr ""
+
+#: gameopt._SC_CLVI
+msgid "Escenarios: El Comercio de Tela con aldeas neutrales"
+msgstr ""
+
+#: gameopt._SC_PIRI
+msgid "Escenarios: Las Islas Piratas y Fortalezas"
+msgstr ""
+
+#: gameopt._SC_FTRI
+msgid "Escenarios: La Tribu Perdida"
+msgstr ""
+
+#: gameopt._SC_WOND
+msgid "Escenarios: Las Maravillas"
+msgstr ""
+
+#.
+#. # Game scenario names and descriptions:
+#. #    Key names are all-caps to match SOCScenario keys;
+#. #    suffixes are .n for scenario name, .d for description. Not all scenarios have a description.
+#. #    The en_US strings must match the name and description in SOCScenario.initAllScenarios().
+#. #    When client needs localized names, server looks for gamescen.SC_WOND.n to see if any exist in the client's locale.
+#. #    See also gameopt._SC_*
+#: gamescen.SC_4ISL.n
+msgid "Las Cuatro Islas"
+msgstr ""
+
+#: gamescen.SC_4ISL.d
+msgid ""
+"Comenzar en una o dos de las islas. Explorar y ganar PVE por construir a "
+"algunas otras."
+msgstr ""
+
+#: gamescen.SC_CLVI.n
+msgid "El Comercio de Tela con aldeas neutrales"
+msgstr ""
+
+#: gamescen.SC_CLVI.d
+msgid ""
+"Las aldeas de las pequeñas islas le da tela. Cada 2 telas que tiene es de 1 "
+"Punto de Victoria extra. Para ganar las telas, construir los barcos a una "
+"aldea. No puede mover el barco pirata hasta que ha llegado a una aldea. Cada "
+"jugador que llega a una aldea recibe una de sus telas en ese momento, y 1 "
+"tela más cada vez que se su número se lanza, hasta que la aldea se agote de "
+"tela. El pirata puede robar tela o recursos. Si menos de 4 de las aldeas aun "
+"tiene tela, el juego termina y el jugador con el más PV gana. (Si los "
+"puntajes son empatados, jugador gana quien tiene el más telas.)"
+msgstr ""
+
+#: gamescen.SC_FOG.n
+msgid "Las Islas de Niebla"
+msgstr ""
+
+#: gamescen.SC_FOG.d
+msgid ""
+"Algunas casillas están ocultos inicialmente por la niebla. Cuando construyes "
+"un barco o un camino a una casilla de niebla, esa casilla se revela. A menos "
+"que sea agua, se le dan su recurso como recompensa."
+msgstr ""
+
+#: gamescen.SC_FTRI.n
+msgid "La Tribu Perdida"
+msgstr ""
+
+#: gamescen.SC_FTRI.d
+msgid ""
+"En las zonas lejanas de la tabla, hay pequeños asentamientos de un \"tribu "
+"perdida\" de Colonos. Cuando los jugadores a construir barcos para llegar a "
+"ellos, son recibidos con \"regalos\" de una Carta de desarrollo, un Punto de "
+"Victoria Especial, o un Puerto dado al jugador, que debe moverlo adyacente a "
+"uno de sus pueblos/ciudades costeros si es posible, o reservarse para ser "
+"colocado más tarde."
+msgstr ""
+
+#: gamescen.SC_NSHO.n
+msgid "Nuevas Orillas"
+msgstr ""
+
+#: gamescen.SC_PIRI.n
+msgid "Las Islas Piratas y Fortalezas"
+msgstr ""
+
+#: gamescen.SC_PIRI.d
+msgid ""
+"Una flota pirata patrulla, atacando para robar recursos de jugadores débiles "
+"con pueblos/ciudades adyacentes, hasta que el jugador construya una fuerte "
+"flota de Barcos de Guerra. Construir sus barcos directamente a la Fortaleza "
+"que tiene su color, que los piratas han capturado de usted. Las rutas de "
+"barco no pueden ramificarse, y deben seguir la línea punteada. Fortalece su "
+"flota por jugar cartas de desarrollo de Barco de Guerra para actualizar sus "
+"barcos. Cuando la flota pirata ataca, usted gana si tiene más Barcos de "
+"Guerra que la fuerza de la flota pirata (es 1-6, al azar). Para ganar el "
+"juego, debe alcanzar el objetivo de puntos de victoria, y derrotarlo la "
+"Fortaleza 3 veces usando barcos de guerra. No hay ladrón o Ejército más "
+"Grande. Cuando se lanza un 7, cualquier ataque de la flota pirata ocure "
+"antes de los descartes habituales."
+msgstr ""
+
+#: gamescen.SC_TTD.n
+msgid "A Través del Desierto"
+msgstr ""
+
+#: gamescen.SC_TTD.d
+msgid ""
+"Comenzar en la isla principal. Explorar y ganar PVE por construir a las "
+"islas pequeñas, o ir a través del desierto a la costa."
+msgstr ""
+
+#: gamescen.SC_WOND.n
+msgid "Las Maravillas"
+msgstr ""
+
+#: gamescen.SC_WOND.d
+msgid ""
+"Cada jugador elige una Maravilla única, y puede construir todos los 4 de sus "
+"niveles. Cada Maravilla tiene sus propios requisitos antes de se puede "
+"construirlo, tales como habiendo construido varias ciudades o un puerto en "
+"un lugar determinado. Para ganar debe completar los 4 niveles de su "
+"Maravilla, o debe llegar a 10 PV y completar más niveles que cualquier otro "
+"jugador. Este escenario no tiene un barco pirata."
+msgstr ""
+
+#.
+#. # recent-chat recap when joining a game or a chat channel
+#: member.join.recap_begin
+msgid "Un resumen del chat más reciente ::"
+msgstr ""
+
+#: member.join.recap_end
+msgid "Fin del resumen ::"
+msgstr ""
+
+#.
+#. # messages for joining/sitting/leaving a game
+#: member.bot.join.cantfind
+msgid "*** No puede encuentrar un robot! ***"
+msgstr ""
+
+#: member.bot.join.fetching
+msgid "Trayendo un robot de jugador..."
+msgstr ""
+
+#: member.bot.join.no.bots.server
+msgid "Los robots no pueden unirse al juego, no hay robots en este servidor."
+msgstr ""
+
+#: member.chat.not_observers
+msgid "Los observadores no pueden charlar durante el juego."
+msgstr ""
+
+#: member.join.game.started
+msgid "Este juego ha comenzado. Jugadores nuevos no pueden sentarse."
+msgstr ""
+
+#: member.join.game.started.bots
+msgid "Este juego ha comenzado. Para jugar, sustituir a un robot."
+msgstr ""
+
+#: member.left.game
+msgid "{0} dejó el juego."
+msgstr ""
+
+#: member.sit.game.full
+msgid "Este juego está llena. No puede sentarse."
+msgstr ""
+
+#: member.sit.game.started
+msgid "Este juego ha comenzado. Para jugar, debe sustituir a un robot."
+msgstr ""
+
+#: member.sit.not.here
+msgid "No puede sentarse aquí."
+msgstr ""
+
+#: prompt.turn.to.build.road
+msgid "Es el turno de {0} para construir un camino."
+msgstr ""
+
+#: prompt.turn.to.build.road.or.ship
+msgid "Es el turno de {0} para construir un camino o un barco."
+msgstr ""
+
+#: prompt.turn.to.build.stlmt
+msgid "Es el turno de {0} para construir un pueblo."
+msgstr ""
+
+#: prompt.discard.1
+msgid "{0} debe descartar."
+msgstr ""
+
+#: prompt.discard.n
+msgid "{0,list} deben descartar."
+msgstr ""
+
+#: prompt.gameopt._SC_3IP.part1
+msgid "Este escenario le da 3 pueblos iniciales y sus caminos."
+msgstr ""
+
+#: prompt.gameopt._SC_3IP.part2
+msgid "Sus recursos gratuitos serán los del tercer pueblo."
+msgstr ""
+
+#: prompt.pick.gold.1
+msgid "{0} debe elegir los recursos de la casilla de oro."
+msgstr ""
+
+#: prompt.pick.gold.n
+msgid "{0,list} deben elegir los recursos de la casilla de oro."
+msgstr ""
+
+#: buy.dev.cards.cannot_now
+msgid "No puede comprar una carta de desarrollo ahora."
+msgstr ""
+
+#: buy.dev.cards.none.common
+msgid "No hay más cartas de desarrollo disponibles para comprar"
+msgstr ""
+
+#.
+#. # Game expiration time; see also stats.game.willexpire.*
+#: reply.addtime.extended
+msgid ">>> Se ha extendido el plazo de juego."
+msgstr ""
+
+#: reply.addtime.game_over
+msgid "Este juego es terminado, no puede extender su plazo."
+msgstr ""
+
+#: reply.addtime.not_expire_soon
+msgid ""
+"Pregunta de nuevo más tarde: Este juego no expira pronto, tiene {0,number} "
+"minutos restantes."
+msgstr ""
+
+#: reply.addtime.practice.never
+msgid ">>> Los juegos de práctica nunca expiran."
+msgstr ""
+
+#: reply.common.cannot.at_that_location
+msgid "No puede hacerlo en ese locación."
+msgstr ""
+
+#: reply.common.cannot.in_this_game
+msgid "No puede hacerlo en este juego."
+msgstr ""
+
+#: reply.common.cannot.right_now
+msgid "No puede hacerlo eso ahora."
+msgstr ""
+
+#: reply.common.trade.cannot_make
+msgid "No puede hacer ese intercambio."
+msgstr ""
+
+#: reply.endturn.cannot
+msgid "No se puede terminar su turno todavía."
+msgstr ""
+
+#: reply.game.not.found
+msgid "Juego no encontrado."
+msgstr ""
+
+#: reply.game_members.of
+msgid "Los miembros del juego {0}:"
+msgstr ""
+
+#: reply.game_members.this
+msgid "Los miembros de este juego:"
+msgstr ""
+
+#: reply.lock.cannot
+msgid "No puede trabar eso ahora."
+msgstr ""
+
+#: reply.must_be_admin.view
+msgid "Para ver esto, usted debe ser un administrador."
+msgstr ""
+
+#: reply.movepiece.cannot.now.ship
+msgid "No puede moverse ese barco ahora."
+msgstr ""
+
+#: reply.pick.gold.cannot.that_many
+msgid "No puede elegir tantos recursos."
+msgstr ""
+
+#: reply.piece.type.unknown
+msgid "El tipo de pieza es desconocido."
+msgstr ""
+
+#: reply.placeitem.cancel
+msgid "{0} canceló la colocación de un artículo especial."
+msgstr ""
+
+#: reply.placeitem.cancel.cannot
+msgid "No se puede cancelar la colocación del artículo."
+msgstr ""
+
+#: reply.playdevcard.cannot.now
+msgid "No se puede jugar {0,dcards} ahora."
+msgstr ""
+
+#: reply.playdevcard.type.unknown
+msgid "El tipo de carta es desconocido."
+msgstr ""
+
+#: reply.rolldice.cannot.now
+msgid "No se puede lanzar los dados ahora."
+msgstr ""
+
+#. # replies for *WHO* command: number of unnamed connections can be less than 0 because of bugs;
+#. # MessageFormat ,choice, allows 0< for a lower-bound default to handle 0 and negative numbers.
+#: reply.who.and_unnamed
+msgid ""
+"y {0,choice, 0<{0,number} conexiones sin nombres|1#1 conexión sin "
+"nombre|1<{0,number} conexiones sin nombres}"
+msgstr ""
+
+#: reply.who.conn_to_srv
+msgid "Actualmente conectados al servidor:"
+msgstr ""
+
+#: start.no.robots.on.server
+msgid ""
+"No hay robots en este servidor; por favor, rellene al menos {0,number} "
+"asientos antes de comenzar."
+msgstr ""
+
+#: start.not.enough.robots
+msgid ""
+"No hay suficientes robots para llenar todos los asientos. Sólo {0,choice, 1#"
+"1 robot está disponible|1<{0,number} robots están disponibles}."
+msgstr ""
+
+#: start.not.enough.robots.lock
+msgid ""
+"No hay suficientes robots para llenar todos los asientos. Trabe unos "
+"asientos. Sólo {0,choice, 1#1 robot está disponible|1<{0,number} robots "
+"están disponibles}."
+msgstr ""
+
+#: start.only.cannot.lock.all
+msgid ""
+"El único jugador no puede trabar todos los asientos. Para comenzar el juego, "
+"otros jugadores o robots deben unirse."
+msgstr ""
+
+#: start.picking.random.starting.player
+msgid "Escoger al azar un jugador que comienza..."
+msgstr ""
+
+#: start.player.must.sit
+msgid "Para comenzar el juego, uno o más jugadores deben sentarse."
+msgstr ""
+
+#: start.robots.cannot.join.options
+msgid ""
+"Lo sentimos, los robots no pueden unirse a este juego debido a los opciones "
+"del juego."
+msgstr ""
+
+#: start.robots.cannot.join.problem
+msgid "Lo sentimos, los robots no pueden unirse a este juego: {0}"
+msgstr ""
+
+#: start.to.start.without.robots
+msgid "Para comenzar el juego sin robots, trabe todos los asientos vacíos."
+msgstr ""
+
+#: action.build.cannot.now
+msgid "No puede construir nada ahora."
+msgstr ""
+
+#: action.build.cannot.now.ask
+msgid "No puede solicitar construir nada ahora."
+msgstr ""
+
+#: action.build.cannot.now.city
+msgid "No puede construir una ciudad ahora."
+msgstr ""
+
+#: action.build.cannot.now.road
+msgid "No puede construir un camino ahora."
+msgstr ""
+
+#: action.build.cannot.now.ship
+msgid "No puede construir un barco ahora."
+msgstr ""
+
+#: action.build.cannot.now.stlmt
+msgid "No puede construir un pueblo ahora."
+msgstr ""
+
+#: action.build.cannot.there.city
+msgid "No puede construir una ciudad ahí."
+msgstr ""
+
+#: action.build.cannot.there.road
+msgid "No puede construir un camino ahí."
+msgstr ""
+
+#: action.build.cannot.there.ship
+msgid "No puede construir un barco ahí."
+msgstr ""
+
+#: action.build.cannot.there.stlmt
+msgid "No puede construir un pueblo ahí."
+msgstr ""
+
+#: action.build.cannot.special.PLP.common
+msgid "Regla de la casa: Construcción Especial requiere 5 o 6 jugadores."
+msgstr ""
+
+#: action.built.city
+msgid "{0} construyó una ciudad."
+msgstr ""
+
+#: action.built.road
+msgid "{0} construyó un camino."
+msgstr ""
+
+#: action.built.ship
+msgid "{0} construyó un barco."
+msgstr ""
+
+#: action.built.stlmt
+msgid "{0} construyó un pueblo."
+msgstr ""
+
+#: action.built.stlmt.cancel
+msgid "{0} canceló esta colocación de un pueblo."
+msgstr ""
+
+#: action.built.nextturn.7.houserule
+msgid ""
+"A partir del próximo turno, se pueden producir tiradas de 7 (regla de la "
+"casa)."
+msgstr ""
+
+#: action.built.sc_ftri.dev
+msgid "{0} recibe una Carta de Desarrollo como regalo de la Tribu Perdida."
+msgstr ""
+
+#: action.card.discoveryplenty
+msgid "{0} jugó una carta de Invención."
+msgstr ""
+
+#: action.card.discov.received
+msgid "{0} recibió {1,rsrcs} del banco."
+msgstr ""
+
+#: action.card.discov.notlegal
+msgid "Eso no es una elección legal de Invención."
+msgstr ""
+
+#: action.card.mono
+msgid "{0} jugó una carta de Monopolio."
+msgstr ""
+
+#: action.card.roadbuilding
+msgid "{0} jugó una carta de Construcción de Camino."
+msgstr ""
+
+#: action.card.roadbuilding.cancel
+msgid "{0} canceló la carta de Construcción de Camino."
+msgstr ""
+
+#: action.card.roadbuilding.skip.r
+msgid "{0} saltó colocar el segundo camino."
+msgstr ""
+
+#: action.card.roadbuilding.skip.s
+msgid "{0} saltó colocar el segundo barco."
+msgstr ""
+
+#: action.card.road.place.1r
+msgid "Usted puede colocar su único camino restante."
+msgstr ""
+
+#: action.card.road.place.1s
+msgid "Usted puede colocar su único camino o barco restante."
+msgstr ""
+
+#: action.card.road.place.2r
+msgid "Usted puede colocar 2 caminos."
+msgstr ""
+
+#: action.card.road.place.2s
+msgid "Usted puede colocar 2 caminos/barcos."
+msgstr ""
+
+#: action.card.soldier
+msgid "{0} jugó una carta del Caballero."
+msgstr ""
+
+#: action.card.soldier.warship
+msgid "{0} convirtió un barco a un barco de guerra."
+msgstr ""
+
+#: action.discarded.total.common
+msgid "{0} descartó {1,number} recursos."
+msgstr ""
+
+#: action.mono.took.your.1
+msgid "El Monopolio de {0} tomó su {1,rsrcs}."
+msgstr ""
+
+#: action.mono.took.your.n
+msgid "El Monopolio de {0} tomó sus {1,rsrcs}."
+msgstr ""
+
+#: action.picked.rsrcs
+msgid "{0} ha elegido {1,rsrcs}."
+msgstr ""
+
+#: action.picked.rsrcs.goldhex
+msgid "{0} ha elegido {1,rsrcs} de la casilla de oro."
+msgstr ""
+
+#: action.rolled.no_other_player_gets.anything
+msgid "Ningún otro jugador recibe nada."
+msgstr ""
+
+#: action.rolled.no_other_player_gets.resources
+msgid "Ningún otro jugador recibe recursos."
+msgstr ""
+
+#: action.rolled.no_player_gets.anything
+msgid "Ningún jugador recibe nada."
+msgstr ""
+
+#: action.rolled.no_player_gets.resources
+msgid "Ningún jugador recibe recursos."
+msgstr ""
+
+#: action.rolled.sc_clvi.received.cloth.1
+msgid "{0} recibió {1,choice, 1#1 tela|1<{1,number} telas} de las aldeas."
+msgstr ""
+
+#. # Player(s) may receive cloth from multiple villages; this message omits each player's cloth amounts
+#: action.rolled.sc_clvi.received.cloth.n
+msgid "{0,list} cada uno recibieron tela de las aldeas."
+msgstr ""
+
+#. # SC_PIRI pirate fleet attacks; should have the same text in client and server properties files
+#: action.rolled.sc_piri.player.lost.rsrcs.to.fleet
+msgid ""
+"{0} perdió {1,choice, 1#1 recurso|1<{1,number} recursos} algo a la ataque de "
+"la flota pirata (fuerza {2,number})."
+msgstr ""
+
+#: action.rolled.sc_piri.player.tied
+msgid "{0} ató contra la flota pirata (fuerza {1,number})."
+msgstr ""
+
+#: action.rolled.sc_piri.player.won.pick.free
+msgid ""
+"{0} ganó contra la flota pirata (fuerza {1,number}) y elegirá un recurso "
+"gratuito."
+msgstr ""
+
+#: action.rolled.sc_piri.you.lost.rsrcs.to.fleet
+msgid "Perdió {0,rsrcs} a la flota pirata (fuerza {1,number})."
+msgstr ""
+
+#: action.sbp.turn.to.place.common
+msgid "Fase Especial de la Construcción: El turno de {0} para colocar."
+msgstr ""
+
+#: forceend.devcard.returned
+msgid "Se devolvió la carta de desarrollo que {0} acaba de jugar."
+msgstr ""
+
+#: robber.cantmove
+msgid "No puede mover el ladrón."
+msgstr ""
+
+#: robber.cantmove.pirate
+msgid "No puede mover el barco pirata."
+msgstr ""
+
+#: robber.cantsteal
+msgid "No se puede robar a ese jugador."
+msgstr ""
+
+#: robber.declined
+msgid "{0} negó a robar."
+msgstr ""
+
+#: robber.moved.choose.cloth.rsrcs
+msgid "{0} se movió el pirata, debe elegir robar tela o robar recursos de {1}."
+msgstr ""
+
+#: robber.willmove
+msgid "{0} se moverá el ladrón."
+msgstr ""
+
+#: robber.willmove.choose
+msgid "{0} debe elegir mover el ladrón o el pirata."
+msgstr ""
+
+#: robber.willmove.pirate
+msgid "{0} se moverá el barco pirata."
+msgstr ""
+
+#. # robber.common.* are used at the client and server,
+#. # and should have the same text in client and server properties files.
+#: robber.common.stole.cloth.from
+msgid "{0} robó una tela de {1}."
+msgstr ""
+
+#: robber.common.stole.resource.from
+msgid "{0} robó un recurso de {1}."
+msgstr ""
+
+#: robber.common.stole.resource.from.n
+msgid "{0} robó {2,number} recursos de {1}."
+msgstr ""
+
+#: robber.common.stole.resource.from.you
+msgid "{0} robó {1,rsrcs} de usted."
+msgstr ""
+
+#: robber.common.you.stole.resource.from
+msgid "Robaste {0,rsrcs} de {2}."
+msgstr ""
+
+#. # robber or pirate moved: {0} = player, {1} = 1 the robber, 2 the pirate
+#: robberpirate.moved
+msgid "{0} movió {1,choice, 1#el ladrón|2#el pirata}."
+msgstr ""
+
+#: robberpirate.moved.choose.cloth.rsrcs
+msgid ""
+"{0} movió {1,choice, 1#el ladrón|2#el pirata}. Debe elegir robar tela o "
+"robar un recurso."
+msgstr ""
+
+#: robberpirate.moved.choose.victim
+msgid "{0} movió {1,choice, 1#el ladrón|2#el pirata}. Debe elegir una víctima."
+msgstr ""
+
+#: event.fog.reveal
+msgid "{0} recibe {1,rsrcs} revelando una casilla de la niebla."
+msgstr ""
+
+#: event.sc_clvi.established
+msgid "{0} estableció una ruta comercial con una aldea."
+msgstr ""
+
+#: event.sc_clvi.game.ending.villages
+msgid "El juego se acaba: Menos de 4 de las aldeas aun tiene tela."
+msgstr ""
+
+#: event.sc_clvi.not.prevented.pirate
+msgid "Ya no se le impide mover el barco pirata."
+msgstr ""
+
+#: event.sc_piri.fleet.defeated
+msgid ""
+"Todas las fortalezas piratas han sido recapturados. La flota pirata es "
+"derrotada."
+msgstr ""
+
+#: event.won.special.cond
+msgid "{0} ha ganado debido a esta condición especial de victoria."
+msgstr ""
+
+#.
+#. # event.svp.* are for SOCSVPTextMessage descriptions.
+#: event.svp.sc_ftri.gift
+msgid "un regalo de la Tribu Perdida"
+msgstr ""
+
+#. # TODO work on the wording for these "que se"; follows "por" in some but not all places in GUI
+#: event.svp.sc_sany.area
+msgid "que se extiende más allá de la zona inicial"
+msgstr ""
+
+#: event.svp.sc_sany.island
+msgid "que se extiende más allá de la isla principal"
+msgstr ""
+
+#: event.svp.sc_seac.area
+msgid "asentó una nueva zona"
+msgstr ""
+
+#: event.svp.sc_seac.island
+msgid "asentó una nueva isla"
+msgstr ""
+
+#: resetboard.doit.announce.playerwholeft
+msgid ">>> Mesa de juego {0} se reinicializa por un jugador que dejó"
+msgstr ""
+
+#: resetboard.doit.announce.requester
+msgid ">>> Mesa de juego {0} se reinicializa por {1}"
+msgstr ""
+
+#: resetboard.doit.interror
+msgid ">>> Error interno, Juego {0} reinicio de la mesa fracasó"
+msgstr ""
+
+#: resetboard.request.everyone.left
+msgid ""
+">>> Todo el mundo ha dejado este juego. Por favor, iniciar un nuevo juego "
+"con los jugadores o bots."
+msgstr ""
+
+#: resetboard.request.unlock.bot
+msgid "Por favor, destrabe al menos un bot, por lo que tendrá un oponente."
+msgstr ""
+
+#: resetboard.vote.request
+msgid "{0} solicita un reinicio de la mesa - Otros jugadores, por favor vote."
+msgstr ""
+
+#: resetboard.vote.request.alloldcli
+msgid ""
+">>> {0} está reinicializando la mesa - Otros jugadores conectados no pueden "
+"votar (cliente es demasiado viejo)."
+msgstr ""
+
+#: stats.game.title
+msgid "-- Estadísticas de juego: --"
+msgstr ""
+
+#: stats.game.rounds
+msgid "Rondas jugado: {0,number}"
+msgstr ""
+
+#: stats.game.startedago
+msgid "Este juego comenzó hace {0,number} minutos."
+msgstr ""
+
+#: stats.game.was.minutes
+msgid "Este juego tomó {0,number} minutos."
+msgstr ""
+
+#: stats.game.was.minutessec
+msgid ""
+"Este juego tomó {0,number} minutos {1,choice, 1#1 segundo|1<{1,number} "
+"segundos}."
+msgstr ""
+
+#: stats.game.was.roundsminutes
+msgid "Este juego fue de {0,number} rondas, y tomó {1,number} minutos."
+msgstr ""
+
+#: stats.game.was.roundsminutessec
+msgid ""
+"Este juego fue de {0,number} rondas, y tomó {1,number} minutos {2,choice, 1#"
+"1 segundo|1<{2,number} segundos}."
+msgstr ""
+
+#. # Game expiration time; see also reply.addtime.*
+#: stats.game.willexpire
+msgid "Este juego va a caducar en {0,number} minutos."
+msgstr ""
+
+#: stats.game.willexpire.urgent
+msgid ">>> Este juego va a caducar en {0,number} minutos."
+msgstr ""
+
+#: stats.game.winner.withpoints
+msgid ">>> {0} ha ganado el juego con {1,number} puntos."
+msgstr ""
+
+#: stats.cli.connected.minutes
+msgid "Has sido conectado {0,number} minutos."
+msgstr ""
+
+#: stats.cli.connected.minutes.prac
+msgid "Ha estado practicando durante {0,number} minutos."
+msgstr ""
+
+#: stats.cli.winloss.lost
+msgid "Ha perdido {0,choice, 1#1 juego|1<{0,number} juegos} desde que conectó."
+msgstr ""
+
+#: stats.cli.winloss.won
+msgid "Ha ganado {0,choice, 1#1 juego|1<{0,number} juegos} desde que conectó."
+msgstr ""
+
+#: stats.cli.winloss.wonlost
+msgid ""
+"Ha ganado {0,choice, 1#1 juego|1<{0,number} juegos} y ha perdido {1,choice, "
+"1#1 juego|1<{1,number} juegos} desde que conectó."
+msgstr ""
+
+#: debug.dev.gets
+msgid "### {0} recibe {1,dcards}."
+msgstr ""
+
+#: debug.devnext.set
+msgid "### La próxima carta de desarrollo se establece en {0,dcards}."
+msgstr ""
+
+#.
+#. # For SOCAccountClient:
+#: account.create.already_exists
+msgid "El apodo \"{0}\" ya está en uso."
+msgstr ""
+
+#: account.create.client_version_minimum
+msgid "Para crear una cuenta, use un cliente de versión {0} o más nuevo."
+msgstr ""
+
+#: account.create.created
+msgid "Creado una cuenta para \"{0}\"."
+msgstr ""
+
+#: account.create.error
+msgid "Cuenta no creada debido a un error."
+msgstr ""
+
+#: account.create.error_db_conn
+msgid ""
+"Hubo un problema al conectar con la base de datos. Inténtelo de nuevo más "
+"tarde."
+msgstr ""
+
+#: account.create.not_auth
+msgid "Su cuenta no está autorizada para crear cuentas."
+msgstr ""
+
+#. # account.common.* are error messages at the client or server,
+#. # and should have the same text in client and server properties files.
+#: account.common.must_auth
+msgid ""
+"Usted debe iniciar la sesión con una cuenta y contraseña antes de puede "
+"crear cuentas."
+msgstr ""
+
+#: account.common.no_accts
+msgid "Este servidor no usa cuentas o contraseñas."
+msgstr ""
+
+#: account.common.password_too_long
+msgid "Ese contraseña es demasiado larga."
+msgstr ""
+
+#.
+#. # Status message text (SOCStatusMessage)
+#. # SV_PW_WRONG
+#: netmsg.status.incorrect_password
+msgid "Contraseña incorrecta para \"{0}\"."
+msgstr ""
+
+#. # SV_NEWCHANNEL_TOO_MANY_CREATED
+#: netmsg.status.newchannel_too_many_created
+msgid "Demasiados de tus canales aún son activos. Cantidad máxima: {0}"
+msgstr ""
+
+#. # SV_NEWGAME_TOO_MANY_CREATED
+#: netmsg.status.newgame_too_many_created
+msgid "Demasiados de tus juegos aún son activos. Cantidad máxima: {0}"
+msgstr ""
+
+#. # SV_NAME_NOT_ALLOWED
+#: netmsg.status.nickname_not_allowed
+msgid "Este apodo no está permitido."
+msgstr ""
+
+#. # SV_OK, SV_OK_SET_NICKNAME
+#. #     To avoid parsing problems, this text sent for SV_OK must not start with a digit or comma or contain '|'
+#: netmsg.status.welcome
+msgid "¡Bienvenido a Los Colonos de Catán en Java!"
+msgstr ""
+
+#: netmsg.status.welcome.debug
+msgid "Debug está activada."
+msgstr ""
+
+#. # netmsg.status.common.* are used at server and client, text must be identical at both.
+#. # SV_NEWGAME_ALREADY_EXISTS
+#: netmsg.status.common.newgame_already_exists
+msgid "Un juego con este nombre ya existe. Elige un otro nombre, por favor."
+msgstr ""
+
+#. # SV_NEWGAME_NAME_REJECTED
+#: netmsg.status.common.newgame_name_rejected
+msgid "Este nombre no es permitida. Elige un otro nombre, por favor."
+msgstr ""
+
+#: netmsg.status.common.newgame_name_rejected_digits_or_punct
+msgid ""
+"Un nombre que has solo dígitos o puntuación no es permitida. Añadir un "
+"letra, por favor."
+msgstr ""
+
+#. # SV_NAME_TOO_LONG
+#: netmsg.status.common.name_too_long
+msgid "Elige un nombre más corta, por favor. La longitud máxima es: {0}"
+msgstr ""
+
+#.
+#. # Admin commands
+#: admin.loadgame.resp.usage
+msgid "Usanza: *LOADGAME* nombre"
+msgstr ""
+
+#: admin.loadgame.err.append__see_console
+msgid ": Vea la consola del servidor"
+msgstr ""
+
+#: admin.loadgame.err.cant_create
+msgid "Hay un problema al cargar {0}: No puede crear el juego: {1}"
+msgstr ""
+
+#: admin.loadgame.err.problem_loading
+msgid "Hay un problema al cargar {0}: {1}"
+msgstr ""
+
+#: admin.loadgame.err.too_new
+msgid "Hay un problema al cargar {0}: Demasiado nuevo: {1}"
+msgstr ""
+
+#. # version number format {1,number,#} avoids automatic thousands separator: want "2400" not "2,400" here
+#: admin.loadgame.err.too_new.vers
+msgid ""
+"Hay un problema al cargar {0}: Demasiado nuevo: gameMinVersion es "
+"{1,number,#}"
+msgstr ""
+
+#: admin.loadgame.ok.game_renamed
+msgid "El juego fue renombrado: El nombre original {0} ya está usado"
+msgstr ""
+
+#: admin.loadgame.ok.to_continue_resumegame
+msgid ">>> Para reanudadir y jugar, escriba *RESUMEGAME*"
+msgstr ""
+
+#: admin.loadsavegame.resp.gamename.chars
+msgid ""
+"El nombre puede incluir sólo las letras, los números, guiones, y guiones "
+"bajos."
+msgstr ""
+
+#: admin.loadsavegame.resp.disabled_prop
+msgid "{0} está deshabilitado: Debe establecer la propiedad {1}"
+msgstr ""
+
+#: admin.loadsavegame.resp.disabled_init
+msgid ""
+"{0} está deshabilitado: Inicialización ha fallado. Consulte los mensajes de "
+"inicialización en la consola del servidor."
+msgstr ""
+
+#: admin.loadsavegame.err.dir_no_access
+msgid "Advertencia: No puede acceder el savegame.dir {0}: {1}"
+msgstr ""
+
+#: admin.loadsavegame.err.dir_not_dir
+msgid "savegame.dir archivo existe pero no es un directorio: {0}"
+msgstr ""
+
+#: admin.loadsavegame.err.dir_not_found
+msgid "savegame.dir no encontrado: {0}"
+msgstr ""
+
+#: admin.resumegame.resp.not_waiting
+msgid "Este juego no es esperando ser reanudando."
+msgstr ""
+
+#: admin.resumegame.resp.usage
+msgid "Usanza: *RESUMEGAME* sin argumentos"
+msgstr ""
+
+#: admin.resumegame.err.not_enough_robots
+msgid ""
+">>> No puede reanudar: No hay suficientes robots para llenar todos los "
+"asientos no vacantes."
+msgstr ""
+
+#: admin.resumegame.ok.resuming
+msgid ">>> Reanudando el juego."
+msgstr ""
+
+#: admin.resumegame.warn.dev_card_deck_contains_unknown_card_type
+msgid ""
+">>> Advertencia: La baraja des Cartas de Desarrollo contiene un tipo "
+"desconocido en el índice {0}."
+msgstr ""
+
+#: admin.resumegame.warn.human_with_bot_name
+msgid ""
+">>> Advertencia: Al menos 1 jugador es nombrado como un robot, pero su "
+"bandera isRobot es falso. Esto puede causar problemas cuando reanudando el "
+"juego."
+msgstr ""
+
+#: admin.savegame.resp.file_exists
+msgid ""
+"Archivo de juego ya existe: Añadir la bandera -f para forzarlo, o usar un "
+"otro nombre"
+msgstr ""
+
+#: admin.savegame.resp.must_initial_placement
+msgid "Debe concluir la colocación inicial antes de guardar."
+msgstr ""
+
+#: admin.savegame.resp.must_resume
+msgid "Debe reanudar el juego cargado antes de guardar de nuevo."
+msgstr ""
+
+#: admin.savegame.resp.usage
+msgid "Usanza: *SAVEGAME* [-f] nombre"
+msgstr ""
+
+#. # {0} can be from admin.savegame.cannot_save.* or freeform text
+#: admin.savegame.err.cannot_save_has
+msgid "No puede guardar este juego, porque el tiene {0}"
+msgstr ""
+
+#: admin.savegame.err.problem_saving
+msgid "Hay un problema al guardar el juego: {0}"
+msgstr ""
+
+#. # the reason can't save or load, for admin.savegame.err.cannot_save_has
+#: admin.savegame.cannot_save.scen
+msgid "el escenario {0} con opción del juego {1}"
+msgstr ""
+
+#: admin.savegame.ok.saved_to
+msgid "Guardadó el juego a {0}"
+msgstr ""
