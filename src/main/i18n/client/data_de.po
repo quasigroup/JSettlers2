@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-12 21:40+0200\n"
-"PO-Revision-Date: 2023-09-17 11:56+0200\n"
+"PO-Revision-Date: 2023-09-17 13:14+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -1307,7 +1307,7 @@ msgstr "Sende den anderen Spielenden das Handelsangebot"
 
 #: hpan.trade.undo
 msgid "Undo Trade"
-msgstr "Handel rückgängig machen"
+msgstr "Handel rückg."
 
 #: hpan.trade.undo.tip
 msgid "Undo the most recent Bank Trade"
@@ -1367,7 +1367,7 @@ msgstr "{0} bietet {1,rsrcs} an, im Tausch gegen {2,rsrcs}."
 
 #: trade.offered.to
 msgid "Offered to: {0}"
-msgstr "Angeboten an: {0}"
+msgstr "Angebot an: {0}"
 
 #: trade.opponent.gives
 msgid "Opponent gives to you"
@@ -2709,7 +2709,7 @@ msgstr "Spieler:in wählen"
 
 #: dialog.robchoose.choose.steal.no.player
 msgid "Choose this to steal from no player"
-msgstr "Wähle dies, um von niemandem zu stehlen."
+msgstr "Wähle dies, um von niemandem zu stehlen"
 
 #: dialog.robchoose.decline
 msgid "(decline)"
