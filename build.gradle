@@ -217,9 +217,15 @@ task fullJar(type: Jar) {
     from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
+static def getTimestamp() {
+    def date = new Date()
+    return date.format('yyyyMMdd-HHmm')
+}
+
 task fullJarWithDependencies(type: Jar) {
     archiveBaseName = 'JSettlersWithDeps'
-    archiveVersion = project.version
+    // archiveFileName = 'JSettlersServerWithDeps.jar'
+    archiveVersion = project.version + "-" + getTimestamp()
     manifest {
         attributes(
                 'Main-Class': 'soc.client.SOCPlayerClient',
