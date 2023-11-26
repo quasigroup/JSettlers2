@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-12 21:40+0200\n"
-"PO-Revision-Date: 2023-09-17 13:14+0200\n"
+"PO-Revision-Date: 2023-10-02 19:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 "X-Poedit-Bookmarks: 315,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-Mapping: *.java=gettext:Java\n"
 "X-Poedit-Basepath: ../../JSettlers2/src/main/java\n"
@@ -332,7 +332,7 @@ msgstr "Bitte warten..."
 
 #: base.reply.not.your.turn
 msgid "It's not your turn."
-msgstr "Du bist nicht an der Reihe."
+msgstr "Du bist nicht dran."
 
 #: base.restart
 msgid "Restart"
@@ -386,7 +386,7 @@ msgstr "Einen Server starten"
 
 #: pcli.cpp.welcomeheading
 msgid "Welcome to JSettlers!  Please choose an option."
-msgstr "Willkommen zu JSettlers!  Bitte wähle eine Option."
+msgstr "Willkommen zu JSettlers! Bitte wähle eine Option."
 
 #.
 #. # SOCPlayerClient window
@@ -694,7 +694,7 @@ msgstr "Spielname"
 #. # game info/status:
 #: game.options.must_enter_nickname_to_check
 msgid "Must enter a nickname to check status"
-msgstr "Muss einen Spitznamen eingeben, um den Status zu prüfen"
+msgstr "Die Eingabe eines Spitznamen ist erforderlich, um den Status zu prüfen"
 
 #: game.options.not_started_yet
 msgid "Not started yet"
@@ -720,7 +720,7 @@ msgstr ""
 #. # messages and prompts:
 #: game.options.nickerror
 msgid "Please go back and enter a valid nickname for your user."
-msgstr "Bitte gehe zurück und gib einen gültigen Spitznamen für Dein Konto ein."
+msgstr "Bitte gehe zurück und gib einen gültigen Spitznamen für dein Konto ein."
 
 #: game.options.oknew
 msgid "Create Game"
@@ -837,7 +837,7 @@ msgstr "Dein Spitzname:"
 
 #: account.create.nickname.your.tip
 msgid "This will be your username."
-msgstr "Dies wird Dein Spitzname sein."
+msgstr "Dies wird dein Spitzname sein."
 
 #: account.create.password
 msgid "Password:"
@@ -1104,7 +1104,7 @@ msgstr "Warte eine Runde, bevor du neue Karten ausspielst."
 
 #: hpan.devcards.warship.cannotnow
 msgid "You cannot convert a ship to a warship right now."
-msgstr "Du kannst ein Schiff im Moment nicht in ein Kriegsschiff umwandeln."
+msgstr "Im Moment kannst Du ein Schiff nicht in ein Kriegsschiff umwandeln."
 
 #: hpan.item.play.cannot
 msgid "Cannot play this item right now."
@@ -1730,7 +1730,7 @@ msgstr "Straße: "
 
 #: build.road.vp
 msgid "0 VP  (longest road = 2 VP)"
-msgstr "0 SP  (längste Straße = 2 SP)"
+msgstr "0 SP (längste Straße = 2 SP)"
 
 #: build.sc_clvi.cloth
 msgctxt "build.sc_clvi.cloth"
@@ -2062,7 +2062,7 @@ msgid ""
 "You have received this trade port as a gift.  You must now place it next to "
 "your coastal settlement which is not adjacent to any existing port."
 msgstr ""
-"Du hast diesen Handelshafen als Geschenk erhalten.  Du musst ihn nun neben "
+"Du hast diesen Handelshafen als Geschenk erhalten. Du musst ihn nun neben "
 "deiner Küstensiedlung platzieren, die nicht an einen bestehenden Hafen "
 "angrenzt."
 
@@ -2372,7 +2372,7 @@ msgstr "Chat-Text darf das Symbol \"|\" nicht enthalten."
 
 #: game.prompt.turn_to_roll_dice
 msgid "It''s {0}''s turn to roll the dice."
-msgstr "Jetzt ist {0} an der Reihe, zu würfeln."
+msgstr "Jetzt ist {0} mit würfeln dran."
 
 #.
 #. #{0} player, {1} number, {2} description

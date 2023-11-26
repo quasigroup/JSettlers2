@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-16 11:53+0200\n"
-"PO-Revision-Date: 2023-09-17 11:56+0200\n"
+"PO-Revision-Date: 2023-10-02 19:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #.
 #. # Reminders about .properties filenames and format:
@@ -454,7 +454,7 @@ msgstr "Standardsiegpunktanzahl in allen Szenarien einstellen"
 
 #: gameopt.SC
 msgid "Game Scenario: #"
-msgstr "Spiel Szenario: #"
+msgstr "Spiel-Szenario: #"
 
 #: gameopt.UB
 msgid "Allow undo piece builds and moves"
@@ -715,7 +715,7 @@ msgstr "Jetzt ist {0} dran, eine Straße zu bauen."
 
 #: prompt.turn.to.build.road.or.ship
 msgid "It''s {0}''s turn to build a road or ship."
-msgstr "Jetzt ist {0} an der Reihe, eine Straße oder ein Schiff zu bauen."
+msgstr "Jetzt ist {0} dran, eine Straße oder ein Schiff zu bauen."
 
 #: prompt.turn.to.build.stlmt
 msgid "It''s {0}''s turn to build a settlement."
@@ -1182,8 +1182,7 @@ msgstr "{0} hat das Stehlen abgelehnt."
 msgid ""
 "{0} moved the pirate, must choose to steal cloth or steal resources from {1}."
 msgstr ""
-"{0} hat den Piraten versetzt und muss sich entscheiden, Tuch oder Rohstoffe von "
-"{1} zu stehlen."
+"{0} hat den Piraten versetzt und wird Tuch oder Rohstoffe von {1} stehlen."
 
 #: robber.willmove
 msgid "{0} will move the robber."
@@ -1191,7 +1190,7 @@ msgstr "{0} wird den Räuber versetzen."
 
 #: robber.willmove.choose
 msgid "{0} must choose to move the robber or the pirate."
-msgstr "{0} muss sich entscheiden den Piraten oder den Räuber zu versetzen."
+msgstr "{0} muss den Piraten oder den Räuber zu versetzen."
 
 #: robber.willmove.pirate
 msgid "{0} will move the pirate ship."
@@ -1229,8 +1228,8 @@ msgid ""
 "{0} moved {1,choice, 1#the robber|2#the pirate}. Must choose to steal cloth or "
 "steal resources."
 msgstr ""
-"{0} hat {1,choice,1#den Räuber|2# den Piraten} versetzt und muss sich "
-"entscheiden, Tuch oder Rohstoffe zu stehlen."
+"{0} hat {1,choice,1#den Räuber|2# den Piraten} versetzt und wird Tuch oder "
+"Rohstoffe stehlen."
 
 #: robberpirate.moved.choose.victim
 msgid "{0} moved {1,choice, 1#the robber|2#the pirate}. Must choose a victim."
@@ -1257,7 +1256,7 @@ msgstr "Du darfst ab jetzt das Piratenschiff versetzen."
 #: event.sc_piri.fleet.defeated
 msgid "All pirate fortresses have been recaptured, the pirate fleet is defeated."
 msgstr ""
-"Alle Piratenfestungen wurden zurück erobert, die Piratenflotte ist besiegt."
+"Alle Piratenfestungen wurden zurück erobert. Die Piratenflotte ist besiegt."
 
 #: event.won.special.cond
 msgid "{0} has won due to this special win condition."
@@ -1377,7 +1376,7 @@ msgstr "Du bist seit {0,number} Minuten verbunden."
 
 #: stats.cli.connected.minutes.prac
 msgid "You have been practicing {0,number} minutes."
-msgstr "Du hast bereits {0,number} Minuten geübt."
+msgstr "Du hast {0,number} Minuten trainiert."
 
 #: stats.cli.winloss.lost
 msgid "You have lost {0,choice, 1#1 game|1<{0,number} games} since connecting."
