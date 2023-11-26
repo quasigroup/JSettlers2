@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-12 21:40+0200\n"
-"PO-Revision-Date: 2023-10-02 19:27+0200\n"
+"POT-Creation-Date: 2023-09-16 10:52+0200\n"
+"PO-Revision-Date: 2023-11-26 14:21+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.1\n"
 "X-Poedit-Bookmarks: 315,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-Mapping: *.java=gettext:Java\n"
 "X-Poedit-Basepath: ../../JSettlers2/src/main/java\n"
@@ -417,8 +417,8 @@ msgstr "Spielinfo"
 #: pcli.main.join.cannot
 msgid "Cannot join, this client is incompatible with features of this game."
 msgstr ""
-"Kann nicht beitreten, da dieser Client nicht mit den Funktionen dieses Spiels "
-"kompatibel ist."
+"Kann nicht beitreten, da dieser Client nicht mit den Funktionen dieses "
+"Spiels kompatibel ist."
 
 #: pcli.main.join.channel
 msgid "Join Channel"
@@ -596,7 +596,8 @@ msgstr "Spreche mit dem Server..."
 #: netmsg.status.common.newgame_already_exists
 msgid "A game with this name already exists, please choose a different name."
 msgstr ""
-"Ein Spiel mit diesem Namen existiert bereits, bitte wähle einen anderen Namen."
+"Ein Spiel mit diesem Namen existiert bereits, bitte wähle einen anderen "
+"Namen."
 
 #. # SV_NEWGAME_NAME_REJECTED
 #: netmsg.status.common.newgame_name_rejected
@@ -618,7 +619,8 @@ msgstr "Bitte wähle einen kürzeren Namen; maximale Länge: {0}"
 #. # Client-only name check, not also at server:
 #: netmsg.status.client.newgame_name_rejected_char
 msgid "Name must not contain \"{0}\", please choose a different name."
-msgstr "Der Name darf \"{0}\" nicht enthalten, bitte wähle einen anderen Namen."
+msgstr ""
+"Der Name darf \"{0}\" nicht enthalten, bitte wähle einen anderen Namen."
 
 #.
 #. #{0}: channel name
@@ -720,7 +722,8 @@ msgstr ""
 #. # messages and prompts:
 #: game.options.nickerror
 msgid "Please go back and enter a valid nickname for your user."
-msgstr "Bitte gehe zurück und gib einen gültigen Spitznamen für dein Konto ein."
+msgstr ""
+"Bitte gehe zurück und gib einen gültigen Spitznamen für dein Konto ein."
 
 #: game.options.oknew
 msgid "Create Game"
@@ -1181,8 +1184,8 @@ msgid ""
 "Click to mark or unlock; is locked to prevent a human from taking over this "
 "robot."
 msgstr ""
-"Zum Markieren oder Entsperren anklicken; ist gesperrt, um zu verhindern, dass "
-"ein Mensch diesen Bot übernimmt."
+"Zum Markieren oder Entsperren anklicken; ist gesperrt, um zu verhindern, "
+"dass ein Mensch diesen Bot übernimmt."
 
 #: hpan.sit.locked.tip.nomark
 msgid ""
@@ -1383,7 +1386,8 @@ msgstr "Bekommt:"
 
 #. # traded with bank or port: {0} = player, {1} = gave, {2} = got, {3} = 1 the bank, 2 a port
 #: trade.traded.rsrcs.for.from.bankport
-msgid "{0} traded {1,rsrcs} for {2,rsrcs} from {3,choice, 1#the bank|2#a port}."
+msgid ""
+"{0} traded {1,rsrcs} for {2,rsrcs} from {3,choice, 1#the bank|2#a port}."
 msgstr ""
 "{0} hat {1,rsrcs} gegen {2,rsrcs} mit {3,choice, 1#der Bank|2#einem Hafen} "
 "getauscht."
@@ -1509,8 +1513,8 @@ msgstr "Um Dinge zu bauen, klicke mit der rechten Maustaste auf den Bauplatz."
 #: board.popup.hint_build_click.osx
 msgid "To build pieces, hold Control while clicking the build location."
 msgstr ""
-"Um Dinge zu bauen, halte die Strg-Taste gedrückt, während du auf den Bauplatz "
-"klickst."
+"Um Dinge zu bauen, halte die Strg-Taste gedrückt, während du auf den "
+"Bauplatz klickst."
 
 #.
 #. # Board popup menu items
@@ -2689,7 +2693,8 @@ msgstr "Ein oder mehrere Spiele sind noch aktiv."
 
 #: dialog.rob.sc_clvi.ask.cloth.or.rsrc
 msgid "Do you want to steal cloth or a resource from this player?"
-msgstr "Willst du von diesem:r Spieler:in ein Tuch oder einen Rohstoff stehlen?"
+msgstr ""
+"Willst du von diesem:r Spieler:in ein Tuch oder einen Rohstoff stehlen?"
 
 #: dialog.rob.sc_clvi.cloth
 msgid "Steal Cloth"
