@@ -21,6 +21,8 @@ JARs for recent JSettlers versions can be downloaded from
 	    - Dev card is returned to their hand
 	    - That player's client must be v2.7.00 or newer; other players can use older clients
 	- New optional house rule: Allow undo building and moving pieces (new game option `UB`; requires client v2.7.00 or newer)
+- I18N:
+	- Added German translation (thank you Eudoxia and Quasigroup)
 - Client:
 	- Game window:
 	    - For visibility when a player builds, highlight most recently placed piece until end of their turn
@@ -37,6 +39,10 @@ JARs for recent JSettlers versions can be downloaded from
 	    - Show game duration and status (not started yet, in progress, finished)
 	    - Even if client can't join game, show its options (with server v2.7.00 or newer)
 	- Don't set gotPassword field while joining a practice game
+	- Game stats:
+	    - Update players' resource stats during game play (previously done only at server)
+	        - Roll stats when playing on server 2.0.00 or newer
+	        - Trade stats when server 2.5.00 or newer
 - Server:
 	- Bugfix: If player cancels Road Building with Cancel Ship button, server now clears player's hasPlayedDevCard() so another can be played
 	- `*STATS*`: Sort the client version list
@@ -64,6 +70,7 @@ JARs for recent JSettlers versions can be downloaded from
 	- Refactored soc.game.GameAction out of soc.extra.robot.GameActionLog.Action
 	- Refactored SOCGame.lastAction out of SOCPlayer.lastActionBankTrade_give, _get
 	- SOCVersionedItem.getMinVersion, itemsMinimumVersion map keys are now always String
+	- SOCPlayerInterface.print +addStarPrefix instead of calling print("* " + someText)
 
 
 ## `2.6.10` (build JM20220705)

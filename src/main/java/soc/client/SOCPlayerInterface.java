@@ -94,7 +94,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.MissingResourceException;
@@ -1654,7 +1653,7 @@ public class SOCPlayerInterface extends JFrame
                     // "___ was lost by {0}."
             }
 
-            print("* " + msg);
+            print(msg, true);
         }
     }
 
@@ -2480,6 +2479,7 @@ public class SOCPlayerInterface extends JFrame
 
     /**
      * print text in the text window, followed by a new line (<tt>'\n'</tt>).
+     * To add a {@code "* "} prefix, call {@link #print(String, boolean)} instead.
      *
      * @param s  the text; you don't need to include "\n".
      * @see #chatPrint(String)
@@ -2488,6 +2488,26 @@ public class SOCPlayerInterface extends JFrame
      */
     public void print(String s)
     {
+        print(s, false);
+    }
+
+    /**
+     * Print text in the text window, followed by a new line (<tt>'\n'</tt>).
+     * Optionally add a {@code "* "} prefix, as used in game actions and announcements from the server.
+     * @param s  the text; you don't need to include "\n".
+     * @param addStarPrefix  If true, print {@code "* "} before {@code s}
+     *    unless {@code s} already starts with a {@code '*'}
+     * @see #print(String)
+     * @see #chatPrint(String)
+     * @see #printKeyed(String)
+     * @see #printKeyed(String, Object...)
+     * @since 2.7.00
+     */
+    public void print(String s, final boolean addStarPrefix)
+    {
+        if (addStarPrefix && (s.charAt(0) != '*'))
+            s = "* " + s;
+
         StringTokenizer st = new StringTokenizer(s, "\n", false);
         while (st.hasMoreElements())
         {
@@ -2608,7 +2628,7 @@ public class SOCPlayerInterface extends JFrame
             final String obsTxt = (obs.size() == 1)
                 ? strings.get("interface.observer.enter.one", obs.get(0))
                 : strings.getSpecial(game, "interface.observer.enter.many", obs);
-            textDisplay.append("* " + obsTxt + "\n");
+            print(obsTxt, true);
         }
     }
 
@@ -2891,7 +2911,7 @@ public class SOCPlayerInterface extends JFrame
     {
         if (reasonText != null)
         {
-            print("* " + reasonText);
+            print(reasonText, true);
             return;
         }
 
@@ -3597,9 +3617,9 @@ public class SOCPlayerInterface extends JFrame
 
         final String plName = player.getName(), aPieceType = "a " + SOCPlayingPiece.getTypeName(pieceType);
         if (movedFromCoordinate != 0)
-            print("* " + plName + " has undone moving " + aPieceType);
+            print(plName + " has undone moving " + aPieceType, true);
         else
-            print("* " + plName + " has undone building " + aPieceType);
+            print(plName + " has undone building " + aPieceType, true);
         // TODO i18n
     }
 
@@ -4413,102 +4433,106 @@ public class SOCPlayerInterface extends JFrame
             pi.changeFace(player.getPlayerNumber(), faceId);
         }
 
-        public void playerStats(EnumMap<PlayerClientListener.UpdateType, Integer> stats)
-        {
-            pi.printKeyed("stats.rolls.your");  // "Your resource rolls: (Clay, Ore, Sheep, Wheat, Wood)"
-            int total = 0;
-
-            // read resource stats into an array for message format access
-            int[] v = new int[5];  // CLAY - WOOD
-            final PlayerClientListener.UpdateType[] types =
-            {
-                PlayerClientListener.UpdateType.Clay,
-                PlayerClientListener.UpdateType.Ore,
-                PlayerClientListener.UpdateType.Sheep,
-                PlayerClientListener.UpdateType.Wheat,
-                PlayerClientListener.UpdateType.Wood
-            };
-
-            int i = 0;
-            for (PlayerClientListener.UpdateType t : types)
-            {
-                int value = stats.get(t).intValue();
-                total += value;
-                v[i] = value;  ++i;
-            }
-
-            pi.printKeyed("stats.rolls.n.total", v[0], v[1], v[2], v[3], v[4], total);  // "{0}, {1}, {2}, {3}, {4}. Total: {5}"
-
-            Integer gp = stats.get(PlayerClientListener.UpdateType.GoldGains);
-            if (gp != null)
-                pi.printKeyed("stats.gold_gains", gp);  // "Resources gained from gold hexes: {0}"
-        }
-
         public void playerStats(final int statsType, final int[] stats)
         {
-            if (statsType != SOCPlayerStats.STYPE_TRADES)
-                return;  // unrecognized type
+            final SOCPlayer clientPlayer = pi.getClientPlayer();
+            if (clientPlayer == null)
+                return;
 
-            pi.printKeyed("game.trade.stats.heading");
-                // "Your trade stats: Give (clay, ore, sheep, wheat, wood) -> Get (clay, ore, sheep, wheat, wood):"
-            final String[] statLabels =
-                {
-                    "game.port.three",  // "3:1 Port"
-                    "game.port.clay", "game.port.ore", "game.port.sheep", // "2:1 Clay port", Ore, Sheep,
-                    "game.port.wheat",  "game.port.wood",  // Wheat, "2:1 Wood port"
-                    "game.trade.stats.bank",  // "4:1 Bank"
-                    "game.trade.stats.with_players"  // "All trades with players"
-                };
-            final int subLen = stats[1];
-            int numTypes = (stats.length - 2) / subLen;
-            if (numTypes > statLabels.length)
-                numTypes = statLabels.length;  // just in case; shouldn't occur
-            int si = 2;  // index just after subLen
-            StringBuilder sb = new StringBuilder();
-            for (int ttype = 0; ttype < numTypes; ++ttype)
+            List<String> prints = new ArrayList<String>();
+
+            switch(statsType)
             {
-                boolean none = true;
-                for (int i = si; i < (si + (2 * 5)); ++i)
-                    if (stats[i] != 0)
-                    {
-                        none = false;
-                        break;
-                    }
-
-                sb.append("* ").append(strings.get(statLabels[ttype]));
-                if (none)
+            case SOCPlayerStats.STYPE_RES_ROLL:
                 {
-                    sb.append(": ");
-                    sb.append(strings.get("base.none"));
-                    si += (2 * 5);
-                } else {
-                    sb.append(": ");
-                    if ((ttype >= 1) && (ttype <= 5)) {
-                        sb.append(stats[si + ttype - 1]);  // 2:1 port; assume only that element != 0
-                        si += 5;
-                    } else {
-                        sb.append('(');
-                        for (int res = 0; res < 5; ++res, ++si)
-                        {
-                            if (res > 0)
-                                sb.append(", ");
-                            sb.append(stats[si]);
-                        }
-                        sb.append(')');
-                    }
-                    sb.append(" -> (");
-                    for (int res = 0; res < 5; ++res, ++si)
-                    {
-                        if (res > 0)
-                            sb.append(", ");
-                        sb.append(stats[si]);
-                    }
-                    sb.append(')');
-                }
+                    // index 0 of plStats is unused
+                    int total = 0;
+                    final int[] plStats = clientPlayer.getResourceRollStats();
+                    for (int i = SOCResourceConstants.CLAY; i <= SOCResourceConstants.WOOD; ++i)
+                        total += plStats[i];
 
-                pi.print(sb.toString());
-                sb.delete(0, sb.length());
+                    prints.add("* " + strings.get
+                        ("stats.rolls.your"));  // "Your resource rolls: (Clay, Ore, Sheep, Wheat, Wood)"
+                    prints.add("* " + strings.get
+                        ("stats.rolls.n.total", plStats[1], plStats[2], plStats[3], plStats[4], plStats[5], total));
+                        // "{0}, {1}, {2}, {3}, {4}. Total: {5}"
+
+                    if (plStats.length > SOCResourceConstants.GOLD_LOCAL)
+                    {
+                        final int gp = plStats[SOCResourceConstants.GOLD_LOCAL];
+                        if (gp != 0)
+                            prints.add("* " + strings.get("stats.gold_gains", gp));  // "Resources gained from gold hexes: {0}"
+                    }
+                }
+                break;
+
+            case SOCPlayerStats.STYPE_TRADES:
+                {
+                    final SOCResourceSet[][] plStats = clientPlayer.getResourceTradeStats();
+
+                    prints.add("* " + strings.get("game.trade.stats.heading"));
+                        // "Your trade stats: Give (clay, ore, sheep, wheat, wood) -> Get (clay, ore, sheep, wheat, wood):"
+                    final String[] statLabels =
+                        {
+                            "game.port.three",  // "3:1 Port"
+                            "game.port.clay", "game.port.ore", "game.port.sheep", // "2:1 Clay port", Ore, Sheep,
+                            "game.port.wheat",  "game.port.wood",  // Wheat, "2:1 Wood port"
+                            "game.trade.stats.bank",  // "4:1 Bank"
+                            "game.trade.stats.with_players"  // "All trades with players"
+                        };
+
+                    final int subArrLen = stats[1];
+                    int numTypes = (stats.length - 2) / subArrLen;
+                    if (numTypes > statLabels.length)
+                        numTypes = statLabels.length;  // just in case; shouldn't occur
+
+                    StringBuilder sb = new StringBuilder();
+                    for (int ttype = 0; ttype < numTypes; ++ttype)
+                    {
+                        boolean none = (plStats[0][ttype].isEmpty() && plStats[1][ttype].isEmpty());
+
+                        sb.append("* ").append(strings.get(statLabels[ttype]));
+                        if (none)
+                        {
+                            sb.append(": ");
+                            sb.append(strings.get("base.none"));
+                        } else {
+                            sb.append(": ");
+                            if ((ttype >= 1) && (ttype <= 5)) {
+                                sb.append(plStats[0][ttype].getAmount(ttype));  // 2:1 port; assume only that element != 0
+                            } else {
+                                sb.append('(');
+                                for (int res = SOCResourceConstants.CLAY; res <= SOCResourceConstants.WOOD; ++res)
+                                {
+                                    if (res > SOCResourceConstants.CLAY)
+                                        sb.append(", ");
+                                    sb.append(plStats[0][ttype].getAmount(res));
+                                }
+                                sb.append(')');
+                            }
+                            sb.append(" -> (");
+                            for (int res = SOCResourceConstants.CLAY; res <= SOCResourceConstants.WOOD; ++res)
+                            {
+                                if (res > SOCResourceConstants.CLAY)
+                                    sb.append(", ");
+                                sb.append(plStats[1][ttype].getAmount(res));
+                            }
+                            sb.append(')');
+                        }
+
+                        prints.add(sb.toString());
+                        sb.delete(0, sb.length());
+                    }
+                }
+                break;
+
+            default:
+                return;  // ignore unrecognized type
             }
+
+            for (String s : prints)
+                pi.print(s);
+            prints.clear();
         }
 
         public void largestArmyRefresh(SOCPlayer old, SOCPlayer potentialNew)
@@ -4620,7 +4644,12 @@ public class SOCPlayerInterface extends JFrame
 
         public void printText(String txt)
         {
-            pi.print(txt);
+            pi.print(txt, false);
+        }
+
+        public void printText(String txt, boolean addStarPrefix)
+        {
+            pi.print(txt, addStarPrefix);
         }
 
         public void messageReceived(String nickname, String message)
@@ -4838,7 +4867,7 @@ public class SOCPlayerInterface extends JFrame
                 // case 2 is "default" so resDesc is always set for compiler
             }
             resDesc = strings.get(resDesc, cplName);  // "Player 2 wins!"
-            pi.print("* " + resDesc);
+            pi.print(resDesc, true);
 
             final String resDesc2;
             if (resultShipsLost == 0)
@@ -4853,7 +4882,7 @@ public class SOCPlayerInterface extends JFrame
                     resDesc2 = strings.get("game.sc_piri.attfort.n.more.attacks", fort.getStrength());
                         // "That Fortress will be defeated after {0} more attack(s)."
                 }
-                pi.print("* " + resDesc2);
+                pi.print(resDesc2, true);
             } else {
                 resDesc2 = null;
             }

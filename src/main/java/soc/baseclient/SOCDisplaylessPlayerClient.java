@@ -244,6 +244,14 @@ public class SOCDisplaylessPlayerClient implements Runnable
     protected boolean debugTraffic;
 
     /**
+     * Should client ignore all {@link SOCPlayerStats} messages,
+     * although they may be about our {@link #nickname} client player? True by default.
+     * @see #handlePLAYERSTATS(SOCPlayerStats, SOCGame, int)
+     * @since 2.7.00
+     */
+    protected boolean ignorePlayerStats = true;
+
+    /**
      * Constructor to set up using this server connect info. Does not actually connect here;
      * subclass methods such as {@link soc.robot.SOCRobotClient#init()} must do so.
      * 
@@ -878,6 +886,23 @@ public class SOCDisplaylessPlayerClient implements Runnable
                 break;
 
             /**
+             * player statistics. Generally ignored by bots;
+             * to support unit tests, added here 2023-11-27 for v2.7.00.
+             */
+            case SOCMessage.PLAYERSTATS:
+                if (! ignorePlayerStats)
+                {
+                    SOCGame ga = games.get(((SOCPlayerStats) mes).getGame());
+                    if (ga != null)
+                    {
+                        SOCPlayer pn = ga.getPlayer(nickname);
+                        if (pn != null)
+                            handlePLAYERSTATS((SOCPlayerStats) mes, ga, pn.getPlayerNumber());
+                    }
+                }
+                break;
+
+            /**
              * generic "simple action" announcements from the server.
              * Added 2013-09-04 for v1.1.19.
              */
@@ -1327,7 +1352,8 @@ public class SOCDisplaylessPlayerClient implements Runnable
 
     /**
      * Handle all players' dice roll result resources: static version to share with SOCPlayerClient.
-     * Game players gain resources.
+     * Calls players' {@link SOCPlayer#addRolledResources(SOCResourceSet)} to gain resources and
+     * update {@link SOCPlayer#getResourceRollStats()}.
      * @param mes  Message data
      * @param ga  Game to update
      * @param nickname  Our client player's nickname, needed only if {@code skipResourceCount} is false.
@@ -1347,7 +1373,7 @@ public class SOCDisplaylessPlayerClient implements Runnable
             final int pn = mes.playerNum.get(p);
             final SOCPlayer pl = ga.getPlayer(pn);
 
-            pl.getResources().add(rs);
+            pl.addRolledResources(rs);
 
             if (! skipResourceCount)
                 handlePLAYERELEMENT_simple
@@ -2417,6 +2443,9 @@ public class SOCDisplaylessPlayerClient implements Runnable
 
     /**
      * Update game data for a trade between players: static to share with SOCPlayerClient.
+     * Calls {@link SOCGame#makeTrade(int, int)} if trade details match current offer,
+     * to update player resources and {@link SOCPlayer#getResourceTradeStats()}.
+     * Otherwise directly updates player resources.
      *<P>
      * Added for v2.5.00, the first server version to include trade details in {@code SOCAcceptOffer} message.
      * Older servers send PLAYERELEMENT messages before ACCEPTOFFER instead, and their ACCEPTOFFER won't have
@@ -2436,17 +2465,29 @@ public class SOCDisplaylessPlayerClient implements Runnable
         if (ga == null)
             return;
 
-        final SOCResourceSet resToAcc = mes.getResToAcceptingPlayer();
-        if (resToAcc == null)
+        final SOCResourceSet resToAccPl = mes.getResToAcceptingPlayer();
+        if (resToAccPl == null)
             return;
 
-        final SOCResourceSet resToOff = mes.getResToOfferingPlayer();
-        final SOCResourceSet accRes = ga.getPlayer(mes.getAcceptingNumber()).getResources(),
-            offRes = ga.getPlayer(mes.getOfferingNumber()).getResources();
-        accRes.add(resToAcc);
-        accRes.subtract(resToOff, true);
-        offRes.add(resToOff);
-        offRes.subtract(resToAcc, true);
+        final int offPN = mes.getOfferingNumber(), accPN = mes.getAcceptingNumber();
+        final SOCResourceSet resToOffPl = mes.getResToOfferingPlayer();
+
+        // Sanity check message resources vs trade offer info;
+        // if everything matches, call ga.makeTrade to update stats too
+        final SOCPlayer offPl = ga.getPlayer(offPN);
+        final SOCTradeOffer offOffered = offPl.getCurrentOffer();
+        if ((offOffered != null)
+            && resToOffPl.equals(offOffered.getGetSet()) && resToAccPl.equals(offOffered.getGiveSet()))
+        {
+            ga.makeTrade(offPN, accPN);
+        } else {
+            final SOCResourceSet accPlRes = ga.getPlayer(accPN).getResources(), offPlRes = offPl.getResources();
+
+            accPlRes.add(resToAccPl);
+            accPlRes.subtract(resToOffPl, true);
+            offPlRes.add(resToOffPl);
+            offPlRes.subtract(resToAccPl, true);
+        }
     }
 
     /**
@@ -2457,7 +2498,8 @@ public class SOCDisplaylessPlayerClient implements Runnable
 
     /**
      * Update a player's resource data from a "bank trade" announcement from the server.
-     * Subtracts the resources given to the bank/port, then adds the resources received.
+     * Calls {@link SOCPlayer#makeBankTrade(ResourceSet, ResourceSet)} to update player resources
+     * and {@link SOCPlayer#getResourceTradeStats()}.
      * See {@link #handlePLAYERELEMENT_numRsrc(SOCPlayer, int, int, int)} for behavior
      * if subtracting more than the known amount of those resources
      * (which often happens for non-client players).
@@ -2481,9 +2523,7 @@ public class SOCDisplaylessPlayerClient implements Runnable
         if (ga == null)
             return false;
 
-        final SOCResourceSet plRes = ga.getPlayer(mes.getPlayerNumber()).getResources();
-        plRes.subtract(mes.getGiveSet(), true);
-        plRes.add(mes.getGetSet());
+        ga.getPlayer(mes.getPlayerNumber()).makeBankTrade(mes.getGiveSet(), mes.getGetSet());
 
         return true;
     }
@@ -2850,6 +2890,61 @@ public class SOCDisplaylessPlayerClient implements Runnable
         else
             ga.setLastAction(new GameAction
                 (at, mes.getParam1(), mes.getParam2(), mes.getParam3(), mes.getRS1(), mes.getRS2()));
+    }
+
+    /**
+     * Update player statistics.
+     * Server currently sends only for client player.
+     * This message is handled by some client types, but ignored in the base
+     * {@link SOCDisplaylessPlayerClient#treat(SOCMessage)} unless its
+     * {@link SOCDisplaylessPlayerClient#ignorePlayerStats} flag is cleared.
+     * @param mes  the message
+     * @param ga  Game the client is playing, from {@link SOCMessageForGame#getGame() mes.getGame()},
+     *     for method reuse by SOCPlayerClient; does nothing if {@code null}
+     * @param client player number in {@code ga}; update this player's stats; does nothing if -1
+     * @since 2.7.00
+     */
+    public static void handlePLAYERSTATS(SOCPlayerStats mes, final SOCGame ga, final int clientPN)
+    {
+        if ((ga == null) || (clientPN == -1))
+            return;  // Not one of our games
+
+        final SOCPlayer pl = ga.getPlayer(clientPN);
+
+        final int[] stats = mes.getParams();
+        switch (mes.getStatType())
+        {
+        case SOCPlayerStats.STYPE_RES_ROLL:
+            {
+                int[] rollStats = new int[1 + SOCResourceConstants.GOLD_LOCAL];
+                int rMax = SOCResourceConstants.GOLD_LOCAL;
+                if (rMax >= stats.length)
+                    rMax = stats.length - 1;
+                for (int rtype = SOCResourceConstants.CLAY; rtype <= rMax; ++rtype)
+                    rollStats[rtype] = stats[rtype];
+
+                pl.setResourceRollStats(rollStats);
+            }
+            break;
+
+        case SOCPlayerStats.STYPE_TRADES:
+            {
+                final int subArrLen = stats[1], resArrLen = subArrLen / 2;
+                int numTypes = (stats.length - 2) / subArrLen;  // probably == SOCPlayer.TRADE_STATS_ARRAY_LEN
+                SOCResourceSet[][] tradeStats = new SOCResourceSet[2][numTypes];
+                for(int i = 2, tradeType = 0; i < stats.length; i += subArrLen, ++tradeType)
+                {
+                    tradeStats[0][tradeType] = new SOCResourceSet(stats[i], stats[i+1], stats[i+2], stats[i+3], stats[i+4], 0);
+                    i += resArrLen;
+                    tradeStats[1][tradeType] = new SOCResourceSet(stats[i], stats[i+1], stats[i+2], stats[i+3], stats[i+4], 0);
+                    i -= resArrLen;
+                }
+
+                pl.setResourceTradeStats(tradeStats);
+            }
+            break;
+
+        }
     }
 
     /**
